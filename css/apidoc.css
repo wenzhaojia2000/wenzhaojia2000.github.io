@@ -1,0 +1,271 @@
+/* Modifed from the API documentation stylesheet by Aras Pranckevičius, http://aras-p.info/
+   and Morgan McGuire. Licensed as public domain or BSD 2-clause.
+   Originally from https://github.com/aras-p/markdeep-docs-style */
+
+/* reset heading/link fonts to that of body */
+.md a,
+.md div.title, contents, .md .tocHeader,
+.md h1, .md h2, .md h3, .md h4, .md h5, .md h6,
+.md .nonumberh1, .md .nonumberh2, .md .nonumberh3, .md .nonumberh4, .md .nonumberh5, .md .nonumberh6,
+.md .shortTOC, .md .mediumTOC, .md .longTOC {
+    font-family: inherit;
+}
+
+@media screen {.md .tocTop {
+    display: inline;
+}}
+
+.md div.title {
+    margin: 0.4em 0 0 0;
+    padding: 0;
+    text-align: inherit;
+}
+
+.md div.subtitle {
+    text-align: inherit;
+}
+
+/* faint border below headings */
+.md h1, .md h2, .md h3, .md h4,
+.md .nonumberh1, .md .nonumberh2, .md .nonumberh3, .md .nonumberh4 {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+/* heading font styles */
+.md h1, .md .nonumberh1, .md div.title {
+    font-size: 150%;
+    font-weight: 600;
+    color: rgba(0,0,0,.7);
+}
+.md h2, .md .nonumberh2 {
+    font-size: 120%;
+    font-weight: 400;
+    color: rgba(0,0,0,.9);
+}
+.md h3, .md .nonumberh3 {
+    font-size: 110%;
+    font-weight: 400;
+    color: rgba(0,0,0,.7);
+}
+/* no numbering of headings */
+.md h1:before, .md h2:before, .md h3:before, .md h4:before { content: none; }
+
+/* link styling */
+.md a:link, .md a:visited {
+    color: #3f51b5;
+}
+
+/* inline and block code */
+.md code, .md pre.listing {
+    background-color: rgba(0,0,0,.05);
+    padding: 0.1em 0.2em;
+    border-radius: 0.15em;
+}
+.md pre.listing code {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+
+/* table of contents styling; make all 3 forms of it look the same */
+.md .longTOC, .md .mediumTOC, .md .shortTOC {
+    font-size: inherit;
+    line-height: 120%;
+    margin: 1em 0;
+    padding: .4rem;
+    border-left: .1rem solid #3f51b5;
+}
+
+.md .tocHeader {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+}
+
+.md .tocNumber {
+    display: none;
+}
+
+.md .longTOC .level1, .md .mediumTOC .level1, .md .shortTOC .level1 {
+    font-weight: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+.md .longTOC p, .md .mediumTOC p, .md .shortTOC p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.md .longTOC center, .md .mediumTOC center, .md .shortTOC center, .md .tocHeader {
+    text-align: left;
+}
+
+.md .longTOC b, .md .mediumTOC b, .md .shortTOC b {
+    font-weight: 400;
+}
+
+.md .longTOC center b, .md .mediumTOC center b, .md .shortTOC center b {
+    font-weight: bold;
+}
+
+.md .longTOC a, .md .mediumTOC a, .md .shortTOC a {
+    color: black;
+}
+
+.md .longTOC .level1, .md .mediumTOC .level1, .md .shortTOC .level1,
+.md .longTOC .level2, .md .mediumTOC .level2, .md .shortTOC .level2,
+.md .longTOC .level3, .md .mediumTOC .level3, .md .shortTOC .level3 {
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    font-size: 90%;
+}
+
+/* tables; use fainter colors than regular markdeep style */
+.md table.table {
+    font-size: 90%;
+}
+
+.md table.table th {
+    border: none;
+    background-color: #ccc;
+    color: rgba(0,0,0,.6);
+}
+.md table.table tr, .md table.table td {
+    border-color: #eee;
+}
+.md table.table tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+
+/********* Modifications to the style sheet begin below *********/
+
+body#md {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: left;
+    margin: 1.5em;
+    padding: 0 1em;
+}
+
+/* if screen is wide enough, put table of contents on the right side
+allow body to expand up to the table of contents rather than be fixed */
+@media screen and (min-width: 64em) {
+    body#md {
+        max-width: calc(100% - 26em);
+    }
+
+    .md .longTOC, .md .mediumTOC, .md .shortTOC {
+        max-width: 20em;
+        right: 0;
+        display: block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        overflow-y: scroll;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 1em;
+    }
+}
+
+/* for narrow screens or print, hide table of contents */
+@media screen and (max-width: 64em) {
+    body#md { max-width: 100% }
+    .md .longTOC, .md .mediumTOC, .md .shortTOC { display: none; }
+}
+
+@media print {
+    .md .longTOC, .md .mediumTOC, .md .shortTOC { display: none; }
+    body { max-width: 100%; }
+}
+
+
+/* prevent text size modification on phones in landscape mode */
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+.md div.subtitle {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.md .afterTitles {
+    height: 0 !important;
+}
+
+/* using __this__ decoration underlines the text instead of bold */
+.md strong.underscore {
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+/* using _this_ decoration highlights the text instead of italic */
+.md em.underscore {
+    font-style: normal;
+    background-color: #FF7;
+}
+
+.md p {
+    text-align: justify;
+}
+
+.md kbd {
+    background-color: #e7e7e7;
+    background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+    background-image: linear-gradient(#fefefe, #e7e7e7);
+    background-repeat: repeat-x;
+    border-radius: 2px;
+    border: 1px solid #cfcfcf;
+    color: #000;
+    padding: 2px 5px;
+    line-height: 10px;
+    font: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    display: inline-block;
+}
+
+.md dfn {
+    font-variant: small-caps;
+    font-style: normal;
+}
+
+.md blockquote:not(.fancyquote) {
+    margin: 10px 0;
+    padding: 0 15px;
+    border-left: 4px solid #ddd;
+}
+
+/* this is from the example in the markdeep demo. */
+.md code > .input  {
+    font-style: italic;
+}
+
+.md code > .output {
+    font-weight: bold;
+    background: #FF7;
+    margin-left: -20px;
+    padding-left: 20px;
+}
+
+/* just a hack that removes the vertical scroll bar in equations */
+mjx-container[display='true'][jax='CHTML'] {
+    overflow: auto; /* prevents overflow of long equations */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.md img {
+    width: 100%;
+    max-width: 400px;
+}
+
+.md table {
+    font-size: inherit;
+}
+
+.md sup, .md sub {
+    line-height: 0;
+}
