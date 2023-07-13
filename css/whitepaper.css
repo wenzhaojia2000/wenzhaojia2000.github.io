@@ -83,7 +83,7 @@ body {
 .md ul ul { padding-left: 22px }
 
 .md ul li::before {
-    content: '\25B6';
+    content: '\25B6\FE0E';
     font-size: 80%;
     color: #cf8313;
     margin-right: 10px;
