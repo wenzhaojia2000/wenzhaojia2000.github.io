@@ -1,3 +1,6 @@
 [submodule "sudoku"]
 	path = sudoku
 	url = https://github.com/wenzhaojia2000/slowed-down-sudoku-bruteforcer.git
+[submodule "scales"]
+	path = scales
+	url = https://github.com/wenzhaojia2000/moving-scales
